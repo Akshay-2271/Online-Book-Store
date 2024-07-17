@@ -1,0 +1,64 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<OnlineBookStore.web.Models.Entities.Book>
+
+<h1>Book</h1>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid black; /* Add borders around cells */
+        padding: 8px;
+        text-align: left;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2; /* Alternate row colors */
+    }
+
+    .btn-primary {
+        background-color: #007bff; /* Blue button background */
+        color: white;
+        border: none;
+        padding: 10px 20px; /* Increase padding for larger button */
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+</style>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Author</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Id</td>
+                <td>@book.Title</td>
+                <td>@book.Description</td>
+                <td>@book.Author</td>
+                <td>
+                    <a class="btn-primary" asp-controller="Book" asp-action="Edit" asp-route-id="@book.Id">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
